@@ -1,0 +1,33 @@
+
+public class Main {
+	
+	public static void main (String[]agrs) {
+		String input = "aaa BBB cdFg lkj AAA";
+		AbstractTransformer t = new ToUpperCaseTransformer();
+		String s = transform(input, t);
+		System.out.println(s);
+		String input2 = "aaa BBB cdFg lkj AAAA";
+		String s2 = transform (input2, new ToUpperCaseTransformer());
+		System.out.println(s2);
+		 
+	}
+	
+	public static String transform (String input, AbstractTransformer t) {
+		String [] words =input.split(" ");
+		
+		for(int i=0; i<words.length; i++) {
+			if (t.checkLenght(words[i])) {
+				words[i]= t.modifyString(words [i]);
+				
+			}
+			if (words[i].length()==4) {
+				words[i]= words[i].toLowerCase();
+			}
+			
+		}
+		return String.join(" ", words);
+		
+	
+	}
+
+}
